@@ -18,6 +18,7 @@ permissions:
 
 env:
   S3_BUCKET_NAME: be-76-stan1ee0
+  APP_NAME: simpletodos
   
 jobs:
   build:
@@ -37,7 +38,7 @@ jobs:
         arguments: build
 
     - name: Make zip file
-      run: zip -r ./practice-deploy.zip .
+      run: zip -r ./$APP_NAME-deploy.zip .
       shell: bash
 
     - name: Configure AWS credentials
@@ -48,11 +49,11 @@ jobs:
         aws-region: ap-northeast-2
 
     - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./practice-deploy.zip s3://$S3_BUCKET_NAME/practice-deploy.zip
+      run: aws s3 cp --region ap-northeast-2 ./$APP_NAME-deploy.zip s3://$S3_BUCKET_NAME/$APP_NAME-deploy.zip
 
     - name: Code Deploy
       run: >
         aws deploy create-deployment --application-name be-76-stan1ee0
         --deployment-config-name CodeDeployDefault.AllAtOnce
         --deployment-group-name be-76-stan1ee0-group
-        --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=practice-deploy.zip
+        --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=$APP_NAME-deploy.zip
