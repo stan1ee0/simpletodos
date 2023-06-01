@@ -16,6 +16,9 @@ on:
 permissions:
   contents: read
 
+env:
+  S3_BUCKET_NAME: be-76-stan1ee0
+  
 jobs:
   build:
 
