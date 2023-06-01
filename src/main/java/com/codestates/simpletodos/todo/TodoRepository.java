@@ -1,4 +1,4 @@
-package com.codestates.simpletodos;
+package com.codestates.simpletodos.todo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

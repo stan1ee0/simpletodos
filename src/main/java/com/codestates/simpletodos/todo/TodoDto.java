@@ -1,4 +1,4 @@
-package com.codestates.simpletodos;
+package com.codestates.simpletodos.todo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

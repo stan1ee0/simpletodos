@@ -1,4 +1,4 @@
-package com.codestates.simpletodos;
+package com.codestates.simpletodos.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
